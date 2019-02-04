@@ -66,7 +66,7 @@ class AplicationActivity : AppCompatActivity() {
         }
 
         btn_cancelar_app.setOnClickListener {
-            val redire = "http://http://${DatabaseSO.ip}:1337/Aplication/$id_so"
+            val redire = "${DatabaseSO.ip}/Aplication/$id_so"
             DatabaseAplication.getList(redire)
             this.irlistarApp()
         }
@@ -196,7 +196,7 @@ class AplicationActivity : AppCompatActivity() {
         Log.i("htpp",parametros.toString())
         var direccion = ""
         if(es_nuevo){
-            direccion = "http://${DatabaseSO.ip}:1337/Aplication"
+            direccion = "${DatabaseSO.ip}/Aplication"
             val url = direccion
                 .httpPost(parametros)
                 .responseString { request, response, result ->
@@ -211,14 +211,14 @@ class AplicationActivity : AppCompatActivity() {
                             val data = result.get()
                             Log.i("http-p", data)
                             mensaje(this,"Aceptado","Datos validos, espere...")
-                            val redire = "http://http://localhost:1337/Aplication/$id_so"
+                            val redire = "${DatabaseSO.ip}/Aplication/$id_so"
                             DatabaseAplication.getList(redire)
                             this.irlistarApp()
                         }
                     }
                 }
         }else{
-            direccion = "//http://${DatabaseSO.ip}:1337/Aplication/$id_so"
+            direccion = "${DatabaseSO.ip}/Aplication/$id_so"
             val url = direccion
                 .httpPut(parametros)
                 .responseString { request, response, result ->
@@ -233,7 +233,7 @@ class AplicationActivity : AppCompatActivity() {
                             val data = result.get()
                             Log.i("http-p", data)
                             mensaje(this,"Aceptado","Datos validos, espere...")
-                            val redire = "//http://${DatabaseSO.ip}:1337/Aplication/$id_so"
+                            val redire = "${DatabaseSO.ip}/Aplication/$id_so"
                             DatabaseAplication.getList(redire)
                             this.irlistarApp()
                         }

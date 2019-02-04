@@ -11,9 +11,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn_crear_so.setOnClickListener {
-            irAPantallaSO()
+            this.irAPantallaSO()
         }
         btn_listar.setOnClickListener {
+            DatabaseSO.getList("${DatabaseSO.ip}/OperativeSystema")
             this.irAListarSO()
         }
 

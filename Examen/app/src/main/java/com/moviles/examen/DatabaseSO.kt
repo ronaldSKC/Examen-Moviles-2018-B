@@ -10,10 +10,10 @@ import com.github.kittinunf.fuel.httpPost
 
 class DatabaseSO{
     companion object {
-        val ip = "172.29.61.125"
+        val ip = "https://moviles-choco179520.c9users.io:8080"
         val sistemasOperativos = ArrayList<OperativeSystem>()
         fun insertarSO(op:OperativeSystem){
-            "http://${ip}:1337/OperativeSystema"
+            "${ip}/OperativeSystema"
                 .httpPost(listOf(
                     "nombre" to op.nombre,
                     "fechaLanzamiento" to op.fechaLanzamiento,

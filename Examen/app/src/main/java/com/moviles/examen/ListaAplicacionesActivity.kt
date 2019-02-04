@@ -67,7 +67,7 @@ class ListaAplicacionesActivity : AppCompatActivity() {
 
     fun refrescar(){
         finish()
-        val direccion = "http://${DatabaseSO.ip}:1337/Aplication/$id_so"
+        val direccion = "${DatabaseSO.ip}/Aplication/$id_so"
         Log.i("http",direccion)
         DatabaseAplication.getList(direccion)
         startActivity(getIntent())
@@ -186,7 +186,7 @@ class AppAdaptador(private val listaAplicaciones: List<Aplicaciones>,
                                 Log.i("Eliminar APP->",id)
 
                                 val parametros = listOf("nombre" to id)
-                                val url = "http://${DatabaseSO.ip}:1337/Aplication/$id"
+                                val url = "${DatabaseSO.ip}/Aplication/$id"
                                     .httpDelete(parametros)
                                     .responseString { request, response, result ->
                                         when (result) {

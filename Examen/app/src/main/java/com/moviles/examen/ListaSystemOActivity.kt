@@ -40,7 +40,7 @@ class ListaSystemOActivity : AppCompatActivity() {
     }
     fun refrescar(){
         finish()
-        val dirccion="http://${DatabaseSO.ip}:1337/OperativeSystema"
+        val dirccion="${DatabaseSO.ip}/OperativeSystema"
         DatabaseSO.getList(dirccion)
         startActivity(getIntent())
     }
@@ -135,10 +135,10 @@ class SOAdaptador(private val listaSistemaOperativos: List<OperativeSystem>,
                                 val id = holder.idSOTextView.text.toString()
                                 Log.i("Eliminar SO->",id)
 
-                                val direccion = "http://${DatabaseSO.ip}:1337/OperativeSystema"
+                                val direccion = "${DatabaseSO.ip}/OperativeSystema"
                                 Log.i("http",direccion)
                                 val parametros = listOf("nombre" to id)
-                                val url = "http://${DatabaseSO.ip}:1337/OperativeSystema/$id"
+                                val url = "${DatabaseSO.ip}/OperativeSystema/$id"
                                     .httpDelete(parametros)
                                     .responseString { request, response, result ->
                                         when (result) {
