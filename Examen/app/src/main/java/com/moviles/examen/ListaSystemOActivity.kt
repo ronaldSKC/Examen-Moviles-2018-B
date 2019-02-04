@@ -7,6 +7,8 @@ import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.PopupMenu
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -18,17 +20,28 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import com.github.kittinunf.fuel.httpDelete
 import com.github.kittinunf.result.Result
+import kotlinx.android.synthetic.main.activity_lista_system_o.*
+
 
 class ListaSystemOActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lista_system_o)
+
+        val layoutManager = LinearLayoutManager(this)
+        val rv = rv_so
+        val adaptador = SOAdaptador(DatabaseSO.sistemasOperativos, this, rv)
+
+        rv_so.layoutManager = layoutManager
+        rv_so.itemAnimator = DefaultItemAnimator()
+        rv_so.adapter = adaptador
+        adaptador.notifyDataSetChanged()
     }
     fun refrescar(){
         finish()
-        val dirccion="http://localhost:1337/OperativeSystem"
-        DatabaseSO.getList()
+        val dirccion="http://localhost:1337/OperativeSystema"
+        DatabaseSO.getList(dirccion)
         startActivity(getIntent())
     }
     fun compartir(contenido:String){
@@ -105,7 +118,7 @@ class SOAdaptador(private val listaSistemaOperativos: List<OperativeSystem>,
     // Llenamos los datos del layout
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val sistema = listaSistemaOperativos[position]
-        val sistemasOperativos = ArrayList<OperativeSystem>()
+
         holder.nombreTextView.setText(sistema.nombre)
         holder.versionTextView.setText(sistema.version)
         holder.idSOTextView.setText(sistema.id.toString())
@@ -122,10 +135,10 @@ class SOAdaptador(private val listaSistemaOperativos: List<OperativeSystem>,
                                 val id = holder.idSOTextView.text.toString()
                                 Log.i("Eliminar SO->",id)
 
-                                val direccion = "http://localhost:1337/OperativeSystem"
+                                val direccion = "http://localhost:1337/OperativeSystema"
                                 Log.i("http",direccion)
                                 val parametros = listOf("nombre" to id)
-                                val url = "http://localhost:1337/OperativeSystem"
+                                val url = "http://localhost:1337/OperativeSystema/$id"
                                     .httpDelete(parametros)
                                     .responseString { request, response, result ->
                                         when (result) {
@@ -160,7 +173,7 @@ class SOAdaptador(private val listaSistemaOperativos: List<OperativeSystem>,
                         mensaje_dialogo(contexto,"Desea editar el SO?",
 
                             fun(){
-                                val so = sistemasOperativos.filter { it.id==id.toInt() }[0]
+                                val so = DatabaseSO.sistemasOperativos.filter { it.id==id.toInt() }[0]
                                 Log.i("Actualizar SO->",so.fechaLanzamiento)
                                 val soSerializado = OperativeSystem(
                                     id.toInt(),
@@ -188,7 +201,7 @@ class SOAdaptador(private val listaSistemaOperativos: List<OperativeSystem>,
                     R.id.hijos_so ->{
                         var direccion = ""
                         val id = holder.idSOTextView.text.toString()
-                        val so = sistemasOperativos.filter { it.id==id.toInt() }[0]
+                        val so = DatabaseSO.sistemasOperativos.filter { it.id==id.toInt() }[0]
                         Log.i("Listar SO->",so.fechaLanzamiento)
                         val soSerializado = OperativeSystem(
                             id.toInt(),
