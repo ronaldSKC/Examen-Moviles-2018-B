@@ -12,7 +12,7 @@ class DatabaseAplication{
     companion object {
         val aplicacion = ArrayList<Aplicaciones>()
         fun insertarSO(op:Aplicaciones){
-            "http://localhost:1337/Aplication"
+            "http://${DatabaseSO.ip}:1337/Aplication"
                 .httpPost(listOf(
                     "nombre" to op.nombre,
                     "fechaLanzamiento" to op.fechaLanzamiento,
@@ -31,7 +31,7 @@ class DatabaseAplication{
             val so: ArrayList<Aplicaciones> = ArrayList()
             val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
-            val (request, response, result) ="http://localhost:1337/Aplication".httpGet().responseString()
+            val (request, response, result) ="http://${DatabaseSO.ip}:1337/Aplication".httpGet().responseString()
             val jsonStringSo = result.get()
             val parser = Parser()
             val stringBuilder = StringBuilder(jsonStringSo)

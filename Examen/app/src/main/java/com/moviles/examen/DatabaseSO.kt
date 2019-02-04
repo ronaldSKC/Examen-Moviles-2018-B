@@ -10,9 +10,10 @@ import com.github.kittinunf.fuel.httpPost
 
 class DatabaseSO{
     companion object {
+        val ip = "172.29.61.125"
         val sistemasOperativos = ArrayList<OperativeSystem>()
         fun insertarSO(op:OperativeSystem){
-            "http://localhost:1337/OperativeSystema"
+            "http://${ip}:1337/OperativeSystema"
                 .httpPost(listOf(
                     "nombre" to op.nombre,
                     "fechaLanzamiento" to op.fechaLanzamiento,
@@ -28,6 +29,7 @@ class DatabaseSO{
             val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
             val (request, response, result) =url.httpGet().responseString()
+            Log.d("http-get",result.get())
             val jsonStringSo = result.get()
             val parser = Parser()
             val stringBuilder = StringBuilder(jsonStringSo)

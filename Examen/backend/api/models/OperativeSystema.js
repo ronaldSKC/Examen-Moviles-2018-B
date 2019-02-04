@@ -8,7 +8,22 @@
 module.exports = {
 
   attributes: {
-
+    nombre:{
+      type: 'string',
+      required: true
+    },
+    fechaLanzamiento:{
+      type: 'string',
+      required: true
+    },
+    peso_gigas:{
+      type: 'string',
+      required: true
+    },
+    version:{
+      type: 'string',
+      required: true
+    },
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝

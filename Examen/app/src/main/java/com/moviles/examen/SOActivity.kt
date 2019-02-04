@@ -15,16 +15,15 @@ class SOActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_so)
         boton_cancelar_reg_so.setOnClickListener {
-            v: View -> irAMain()
+             this.irAMain()
         }
         boton_registrar_so.setOnClickListener {
-            v: View? ->  irListaSO()
+            this.irListaSO()
         }
     }
     fun irListaSO(){
         if (txt_nombre.text.toString().isEmpty()||
             txt_fecha.text.toString().isEmpty()||
-            txt_id_so_r.text.toString().isEmpty()||
             txt_peso.text.toString().isEmpty()||
             txt_version.text.toString().isEmpty()){
             Alerter.create(this)

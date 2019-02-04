@@ -13,6 +13,9 @@ class MainActivity : AppCompatActivity() {
         btn_crear_so.setOnClickListener {
             irAPantallaSO()
         }
+        btn_listar.setOnClickListener {
+            this.irAListarSO()
+        }
 
     }
 
