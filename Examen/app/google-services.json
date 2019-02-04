@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "499889732204",
+    "firebase_url": "https://examen-moviles-f149e.firebaseio.com",
+    "project_id": "examen-moviles-f149e",
+    "storage_bucket": "examen-moviles-f149e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499889732204:android:82b034e1e0ca2c73",
+        "android_client_info": {
+          "package_name": "com.moviles.examen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499889732204-t0sgr8o4g1msfvlbqbbr7ummh30csjhb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZM1gfhKlQPr27uoD7NROmto4vDMvslVY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
