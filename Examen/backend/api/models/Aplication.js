@@ -13,33 +13,32 @@ module.exports = {
       type: 'string',
       required: true
 		},
-      version: {
+    version: {
       type: 'string',
       required: true
     },
-      fechaLanzamiento: {
+    fechaLanzamiento: {
       type: 'string',
       required: true
     },
-      peso_gigas: {
+    peso_gigas: {
       type: 'string',
       required: true
     },
-      costo:{
+    costo:{
       type: 'string',
       required: true
     },
-      url_descargar:{
+    url_descargar:{
       type: 'string',
       required: true
     },
-      codigo_barras:{
+    codigo_barras:{
       type: 'string',
       required: true
     },
-      sistemaOperativo: {
-      type: 'number',
-      required: true
+    sistemaOperativo: {
+      model:"OperativeSystema"
     },
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗

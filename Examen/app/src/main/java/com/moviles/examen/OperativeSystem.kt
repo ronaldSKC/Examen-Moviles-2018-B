@@ -3,7 +3,7 @@ package com.moviles.examen
 import android.os.Parcel
 import android.os.Parcelable
 
-class OperativeSystem(val id: Int?,
+class OperativeSystem(val id: Int,
                       val nombre: String,
                       val fechaLanzamiento:String,
                       val peso_gigas:String,

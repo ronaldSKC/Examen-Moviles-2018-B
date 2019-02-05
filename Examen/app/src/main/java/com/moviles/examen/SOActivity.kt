@@ -10,16 +10,33 @@ import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_so.*
 
 class SOActivity : AppCompatActivity() {
-
+    var OperativeSystem: OperativeSystem? = null
+    var tipo = false
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_so)
-        boton_cancelar_reg_so.setOnClickListener {
-             this.irAMain()
+        
+        val type = intent.getStringExtra("tipo")
+        
+        if(type.equals("Edit")){
+            textView.text= "Editar S.O."
+            OperativeSystem = intent.getParcelableExtra("sistema_operativo")
+            fillFields()
+            tipo =  true
         }
+        
         boton_registrar_so.setOnClickListener {
             this.irListaSO()
         }
+    }
+    fun fillFields() {
+        txt_nombre.setText(OperativeSystem?.nombre)
+        txt_fecha.setText(OperativeSystem?.fechaLanzamiento)
+        txt_peso.setText(OperativeSystem?.peso_gigas)
+        txt_version.setText(OperativeSystem?.version)
+
+        
     }
     fun irListaSO(){
         if (txt_nombre.text.toString().isEmpty()||
@@ -38,17 +55,19 @@ class SOActivity : AppCompatActivity() {
             var fecha = txt_fecha.text.toString()
             var peso = txt_peso.text.toString()
             var version = txt_version.text.toString()
-            var so = OperativeSystem(0,nombre,fecha,peso,version)
-            DatabaseSO.insertarSO(so)
+            
+            if(!tipo){
+               var so = OperativeSystem(0,nombre,fecha,peso,version)        
+               DatabaseSO.insertarSO(so)
+            }
             Toasty.success(this, "Datos Registrados", Toast.LENGTH_LONG, true).show()
-            val intent = Intent(this, ListaSystemOActivity::class.java)
-            startActivity(intent)
+            this.irALista()
         }
 
     }
-    fun irAMain(){
-        finish()
-        val intent = Intent(this, MainActivity::class.java)
+    fun irALista(){
+    
+        val intent = Intent(this, ListaSystemOActivity::class.java)
         startActivity(intent)
     }
 }

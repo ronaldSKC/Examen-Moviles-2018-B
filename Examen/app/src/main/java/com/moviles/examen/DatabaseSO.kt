@@ -24,12 +24,28 @@ class DatabaseSO{
                     Log.d("http-ejemplo", request.toString())
                 }
         }
-        fun getList(url:String):ArrayList<OperativeSystem>{
+        fun eliminarSO (id: Int){
+            "${ip}/OperativeSystema/${id}".httpDelete()
+                .responseString { request, response, result ->
+                    Log.d("http-ejemplo", request.toString())
+        }
+        fun actualizarSO(so: OperativeSystem){
+            "${ip}/OperativeSystema/${so.id}".httpPut(listOf(
+                    "nombre" to op.nombre,
+                    "fechaLanzamiento" to op.fechaLanzamiento,
+                    "peso_gigas" to op.peso_gigas,
+                    "version" to op.version
+                    ))
+                .responseString { request, _, result ->
+                    Log.d("http-ejemplo", request.toString())
+                }
+        }
+        fun getList():ArrayList<OperativeSystem>{
             val so: ArrayList<OperativeSystem> = ArrayList()
             val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
-            val (request, response, result) =url.httpGet().responseString()
-            Log.d("http-get",result.get())
+            val (request, response, result) ="${ip}/OperativeSystema".httpGet().responseString()
+            
             val jsonStringSo = result.get()
             val parser = Parser()
             val stringBuilder = StringBuilder(jsonStringSo)
@@ -47,6 +63,32 @@ class DatabaseSO{
             }
             return so
         }
+        fun buscarSO(nombre:String): ArrayList<Conductor> {
+            val so: ArrayList<OperativeSystem> = ArrayList()
+            val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+            StrictMode.setThreadPolicy(policy)
+            val (request, response, result) = "${ip}/OperativeSystema?nombres=${nombre}".httpGet().responseString()
+            val jsonStringEstudiante = result.get()
+
+            val jsonStringSo = result.get()
+            val parser = Parser()
+            val stringBuilder = StringBuilder(jsonStringSo)
+            val array = parser.parse(stringBuilder) as JsonArray<JsonObject>
+
+            array.forEach {
+                val id = it["id"] as Int
+                val nombreA = it["nombre"] as String
+                val fechaP = it["fechaLanzamiento"] as String
+                val pesoGb = it["peso_gigas"]as String
+                val versionS = it["version"]as String
+
+                val operativeS = OperativeSystem(id,nombreA,fechaP,pesoGb,versionS)
+                so.add(operativeS)
+            }
+            return so
+        }
+
+    }
     }
 
 }

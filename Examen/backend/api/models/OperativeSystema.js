@@ -24,6 +24,10 @@ module.exports = {
       type: 'string',
       required: true
     },
+    aplicacione:{
+      collection:"Aplication",
+      via:"sistemaOperativo"
+    }
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
