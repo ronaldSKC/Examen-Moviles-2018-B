@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
             this.irAPantallaSO()
         }
         btn_listar.setOnClickListener {
-            DatabaseSO.getList("${DatabaseSO.ip}/OperativeSystema")
+
             this.irAListarSO()
         }
 

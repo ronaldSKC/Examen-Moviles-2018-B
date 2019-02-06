@@ -9,7 +9,7 @@ class OperativeSystem(val id: Int,
                       val peso_gigas:String,
                       val version:String):Parcelable{
     constructor(parcel: Parcel) : this(
-        parcel.readValue(Int::class.java.classLoader) as? Int,
+        parcel.readValue(Int::class.java.classLoader) as Int,
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
