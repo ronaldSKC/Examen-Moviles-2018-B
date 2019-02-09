@@ -17,7 +17,10 @@ class MainActivity : AppCompatActivity() {
         btn_listar.setOnClickListener {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of c066d74... back en la web
 =======
 >>>>>>> parent of c066d74... back en la web
 =======
