@@ -63,13 +63,13 @@ class DatabaseSO{
             }
             return so
         }
-        fun buscarSO(nombre:String): ArrayList<Conductor> {
+        fun buscarSO(nombre:String): ArrayList<OperativeSystem> {
             val so: ArrayList<OperativeSystem> = ArrayList()
             val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
             StrictMode.setThreadPolicy(policy)
             val (request, response, result) = "${ip}/OperativeSystema?nombres=${nombre}".httpGet().responseString()
             val jsonStringEstudiante = result.get()
-
+c
             val jsonStringSo = result.get()
             val parser = Parser()
             val stringBuilder = StringBuilder(jsonStringSo)
