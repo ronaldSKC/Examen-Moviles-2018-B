@@ -12,10 +12,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         
         btn_crear_so.setOnClickListener {
-            this.irAPantallaSO()
+            irAPantallaSO()
         }
         btn_listar.setOnClickListener {
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of c066d74... back en la web
             this.irAListarSO()
         }
 
