@@ -8,6 +8,7 @@
 module.exports = {
 
   attributes: {
+<<<<<<< HEAD
 	  
 	  nombre: {
       type: 'string',
@@ -40,6 +41,8 @@ module.exports = {
     sistemaOperativo: {
       model:"OperativeSystema"
     },
+=======
+>>>>>>> parent of 929844d... sails aplication
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
